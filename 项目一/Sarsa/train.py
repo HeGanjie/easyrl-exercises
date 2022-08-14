@@ -34,12 +34,12 @@ def run_episode(env, agent, render=False):
         # 训练 Sarsa 算法
         agent.learn(obs, action, reward, next_obs, next_action, done)
 
-        action = next_action
-        obs = next_obs  # 存储上一个观察值
-        total_reward += reward
+        action = next_action  # 更新动作
+        obs = next_obs  # 更新观察
+        total_reward += reward  # 更新累计回报（奖励）
         total_steps += 1  # 计算step数
         if render:
-            env.render()  #渲染新的一帧图形
+            env.render()  # 进行一次渲染
         if done:
             break
     return total_reward, total_steps
@@ -54,7 +54,7 @@ def test_episode(env, agent):
         total_reward += reward
         obs = next_obs
         time.sleep(0.5)
-        env.render()
+        env.render()  # 进行一次渲染
         if done:
             print('test reward = %.1f' % (total_reward))
             break
@@ -87,7 +87,7 @@ def main():
         summary.add_scalar('Sarsa/episode rewards', ep_reward,
                            episode)
 
-        # 每隔20个episode渲染一下看看效果
+        # 每隔20个episode渲染一次看看效果
         if episode % 20 == 0:
             is_render = True
         else:
