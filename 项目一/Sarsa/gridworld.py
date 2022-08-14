@@ -192,4 +192,4 @@ if __name__ == '__main__':
         obs, reward, done, info = env.step(action)
         print('step {}: action {}, obs {}, reward {}, done {}, info {}'.format(\
                 step, action, obs, reward, done, info))
-        # env.render() # 渲染一帧图像
+        # env.render() # 进行一次渲染
