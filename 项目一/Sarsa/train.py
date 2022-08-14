@@ -83,7 +83,7 @@ def main():
         print('Episode %s: steps = %s , reward = %.1f' % (episode, ep_steps,
                                                           ep_reward))
 
-        # 保存训练过程奖励变化
+        # 保存训练过程中，每个回合的累计回报（奖励）
         summary.add_scalar('Sarsa/episode rewards', ep_reward,
                            episode)
 
