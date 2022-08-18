@@ -77,6 +77,9 @@ def main():
         gamma=0.9,
         e_greed=0.1)
 
+    # 读取Q表格（策略）
+    # agent.restore(npy_file='./q_table.npy')
+
     is_render = False
     for episode in range(500):
         ep_reward, ep_steps = run_episode(env, agent, is_render)
@@ -97,9 +100,6 @@ def main():
 
     # 保存Q表格（策略）
     # agent.save()
-
-    # 读取Q表格（策略）
-    # agent.restore(npy_file='./q_table.npy')
 
 
 if __name__ == "__main__":
