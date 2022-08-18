@@ -14,11 +14,11 @@
 
 # -*- coding: utf-8 -*-
 
+import time
 import gym
+assert gym.__version__ == "0.18.0", "[Version WARNING] please try `pip install gym==0.18.0`"
 from gridworld import CliffWalkingWapper, FrozenLakeWapper
 from agent import SarsaAgent
-import time
-assert gym.__version__ == "0.18.0", "[Version WARNING] please try `pip install gym==0.18.0`"
 from parl.utils import summary
 
 def run_episode(env, agent, render=False):
