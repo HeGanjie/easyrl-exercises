@@ -35,6 +35,9 @@ from parl.utils import logger, summary
 # 学习率
 LEARNING_RATE = 1e-3
 
+# 训练回合数
+train_episode = 1000
+
 
 # 训练一个episode
 def run_train_episode(agent, env):
@@ -125,9 +128,9 @@ def main():
     #     exit()
 
     # 设置 进度条
-    pbar = tqdm(total=1000)
+    pbar = tqdm(total=train_episode)
     # 训练 1000 个 episode（回合）
-    for i in range(1000):
+    for i in range(train_episode):
         # 训练一个episode，并返回该episode的 观测列表、动作列表、回报（奖励）列表
         obs_list, action_list, reward_list = run_train_episode(agent, env)
 
@@ -154,6 +157,9 @@ def main():
             # 查看 智能体 跑 5 个episode，累计回报（奖励）的平均值
             total_reward = run_evaluate_episodes(agent, env, render=False)
             logger.info('Test reward: {}'.format(total_reward))
+            # 记录测试过程中，每个episode的累积回报（奖励）
+            summary.add_scalar('{}/training_rewards'.format('Policy Gradient'),
+                               sum(reward_list), i)
 
         # 更新进度条
         pbar.update(1)
