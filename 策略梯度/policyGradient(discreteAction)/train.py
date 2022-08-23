@@ -159,7 +159,7 @@ def main():
             logger.info('Test reward: {}'.format(total_reward))
             # 记录测试过程中，每个episode的累积回报（奖励）
             summary.add_scalar('{}/testing_rewards'.format('Policy Gradient'),
-                               sum(reward_list), i)
+                               total_reward, i)
 
         # 更新进度条
         pbar.update(1)
